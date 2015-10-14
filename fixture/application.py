@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Maxim.Rumyantsev'
 from selenium import webdriver
-from fixture_f.session_f import SessionHelper
+from fixture.session_f import SessionHelper
 
 class Application:
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import pytest,datetime,json,os.path
-from fixture_f.application import Application
+from fixture.application import Application
 
 
 now_time = datetime.datetime.now()
@@ -17,7 +17,6 @@ def app(request):
     # если фикстура не создана или невалидна то создаем ее
     if fixture is None or not fixture.fixture_is_valid():
         fixture = Application(browser=browser,base_url=web_config['base_url'])
-    fixture.session.ensure_login(username=web_config['username'],password=web_config['password'])
     return fixture
 
 
