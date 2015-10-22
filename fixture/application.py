@@ -2,6 +2,7 @@
 __author__ = 'Maxim.Rumyantsev'
 from selenium import webdriver
 from fixture.session_f import SessionHelper
+from fixture.project_f import ProjectHelper
 
 class Application:
 
@@ -14,7 +15,7 @@ class Application:
             return False
 
     def __init__(self,browser, base_url):
-        # параметр отвечает за запуск браузера бля тестов
+        # параметр отвечает за запуск браузера для тестов
         if browser=="firefox":
             self.wd = webdriver.Firefox()
         elif browser=="chrome":
@@ -26,6 +27,7 @@ class Application:
 
         #self.wd.implicitly_wait(1)
         self.session = SessionHelper(self)
+        self.project = ProjectHelper(self)
         self.base_url = base_url
 
  # заполнение  тестовых полей name- имя поля; send_keys_parameters - текст для заполнения

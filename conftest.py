@@ -14,9 +14,13 @@ def app(request):
     browser = request.config.getoption("--browser")
     #читаем из файла конфигурации все что касается web
     web_config = load_config(request.config.getoption("--target"))['web']
+    login_config = load_config(request.config.getoption("--target"))['webadmin']
+    #все, что касается админа
+
     # если фикстура не создана или невалидна то создаем ее
     if fixture is None or not fixture.fixture_is_valid():
         fixture = Application(browser=browser,base_url=web_config['base_url'])
+    fixture.session.ensure_login(username=login_config['username'],password=login_config['password'])
     return fixture
 
 
